@@ -35,7 +35,6 @@ TODO
 
 ### Routing
 
-- root index.php
 - root console.php
 
 ### DevOps
@@ -56,3 +55,4 @@ TODO
 - cross-application commands
 - ui for managing all applications
 - root index page
+- adding a simple configuration inferface (like yml, xml, etc.)
