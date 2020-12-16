@@ -1,0 +1,3 @@
+index:
+    path: /
+    controller: Acme\Application\Admin\Controller\IndexController::index

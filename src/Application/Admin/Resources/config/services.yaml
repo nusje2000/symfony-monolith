@@ -1,0 +1,16 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    Acme\Application\Admin\:
+        resource: '../../'
+        exclude:
+            - '../../DependencyInjection/'
+            - '../../Entity/'
+            - '../../Tests/'
+            - '../../Kernel.php'
+
+    Acme\Application\Admin\Controller\:
+        resource: '../../Controller/'
+        tags: [ 'controller.service_arguments' ]
