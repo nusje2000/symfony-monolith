@@ -17,11 +17,14 @@
         "phpstan/phpstan": "^0.12.63",
         "phpstan/phpstan-phpunit": "^0.12.17",
         "phpstan/phpstan-strict-rules": "^0.12.7",
-        "phpunit/phpunit": "^9.5",
+        "phpunit/phpunit": "^8.5",
         "thecodingmachine/phpstan-strict-rules": "^0.12.1",
         "vimeo/psalm": "^4.3"
     },
     "config": {
+        "platform": {
+            "php": "7.2.5"
+        },
         "optimize-autoloader": true,
         "preferred-install": {
             "*": "dist"
