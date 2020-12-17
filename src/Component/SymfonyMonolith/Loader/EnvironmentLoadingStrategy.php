@@ -22,6 +22,7 @@ final class EnvironmentLoadingStrategy implements LoadingStrategy
 
     public function getApplication(ApplicationRegistry $registry): ?string
     {
+        /** @var mixed $application */
         $application = $_SERVER[$this->environmentName] ?? null;
 
         if (is_string($application) && $registry->hasApplication($application)) {

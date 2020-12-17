@@ -19,11 +19,17 @@ final class SubdomainLoadingStrategy implements LoadingStrategy
 
     private function extractApplicationName(ApplicationRegistry $registry, string $host): ?string
     {
-        $applications = $registry->getApplicationNames();
-        foreach ($applications as $application) {
-            if (0 === stripos($host, $application)) {
-                return $application;
-            }
+        // example: subdomain.admin.localhost
+        $parts = explode('.', $host);
+
+        // remove localhost
+        array_pop($parts);
+
+        // extract admin from subdomain.admin
+        $application = end($parts);
+
+        if (false !== $application && $registry->hasApplication($application)) {
+            return $application;
         }
 
         return null;

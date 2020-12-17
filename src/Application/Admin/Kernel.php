@@ -46,16 +46,16 @@ class Kernel extends BaseKernel
 
     public function getCacheDir(): string
     {
-        return $_SERVER['SYMFONY_CACHE_DIR'] ?? parent::getCacheDir();
+        return (string) ($_SERVER['SYMFONY_CACHE_DIR'] ?? parent::getCacheDir());
     }
 
     public function getLogDir(): string
     {
-        return $_SERVER['SYMFONY_LOG_DIR'] ?? parent::getLogDir();
+        return (string) ($_SERVER['SYMFONY_LOG_DIR'] ?? parent::getLogDir());
     }
 
-    public function getProjectDir()
+    public function getProjectDir(): string
     {
-        return $_SERVER['SYMFONY_PROJECT_DIR'] ?? parent::getProjectDir();
+        return (string) ($_SERVER['SYMFONY_PROJECT_DIR'] ?? parent::getProjectDir());
     }
 }

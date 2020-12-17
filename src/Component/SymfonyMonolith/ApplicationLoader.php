@@ -26,6 +26,9 @@ final class ApplicationLoader
      */
     private $loadedApplication;
 
+    /**
+     * @param array<LoadingStrategy> $loadingStrategies
+     */
     public function __construct(ApplicationRegistry $registry, array $loadingStrategies)
     {
         $this->registry = $registry;
@@ -58,6 +61,6 @@ final class ApplicationLoader
 
     public function getLoadedKernel(): KernelInterface
     {
-        return $this->registry->getKernel($this->loadedApplication);
+        return $this->registry->getKernel($this->getLoadedApplication());
     }
 }

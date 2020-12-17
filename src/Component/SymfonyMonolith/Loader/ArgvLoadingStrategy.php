@@ -12,6 +12,8 @@ final class ArgvLoadingStrategy implements LoadingStrategy
     public function getApplication(ApplicationRegistry $registry): ?string
     {
         $input = new ArgvInput();
+
+        /** @var mixed $application */
         $application = $input->getParameterOption(['-a', '--application'], null);
 
         if (is_string($application) && $registry->hasApplication($application)) {

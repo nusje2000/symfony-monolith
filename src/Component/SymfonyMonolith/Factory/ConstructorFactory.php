@@ -4,13 +4,12 @@ declare(strict_types=1);
 
 namespace Acme\Component\SymfonyMonolith\Factory;
 
-use Acme\Component\SymfonyMonolith\Exception\InvalidKernelFactory;
 use Symfony\Component\HttpKernel\KernelInterface;
 
 final class ConstructorFactory implements KernelFactory
 {
     /**
-     * @var string
+     * @var class-string<KernelInterface>
      */
     private $kernelClass;
 
@@ -20,7 +19,8 @@ final class ConstructorFactory implements KernelFactory
     private $arguments;
 
     /**
-     * @param class-string $kernelClass
+     * @param class-string<KernelInterface> $kernelClass
+     * @param array<mixed>                  $arguments
      */
     public function __construct(string $kernelClass, ...$arguments)
     {
@@ -30,12 +30,6 @@ final class ConstructorFactory implements KernelFactory
 
     public function create(): KernelInterface
     {
-        $kernel = new $this->kernelClass(...$this->arguments);
-
-        if (!$kernel instanceof KernelInterface) {
-            throw InvalidKernelFactory::createdInvalidKernel($kernel);
-        }
-
-        return $kernel;
+        return new $this->kernelClass(...$this->arguments);
     }
 }
