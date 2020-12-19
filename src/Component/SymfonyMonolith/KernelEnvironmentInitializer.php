@@ -9,8 +9,8 @@ final class KernelEnvironmentInitializer
     public const PROJECT_DIR_ENVIRONMENT = 'SYMFONY_PROJECT_DIR';
     public const CACHE_DIR_ENVIRONMENT = 'SYMFONY_CACHE_DIR';
     public const LOG_DIR_ENVIRONMENT = 'SYMFONY_LOG_DIR';
-    private const RELATIVE_CACHE_PATH = '/var/cache/{applicaiton}/{environment}';
-    private const RELATIVE_LOG_PATH = '/var/log/{applicaiton}/{environment}';
+    private const RELATIVE_CACHE_PATH = '/var/cache/{application}/{environment}';
+    private const RELATIVE_LOG_PATH = '/var/log/{application}/{environment}';
     private const DIRECTORY_SEPARATORS = DIRECTORY_SEPARATOR . '/';
 
     /**
