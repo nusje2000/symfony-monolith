@@ -9,6 +9,7 @@ services:
             - '../../DependencyInjection/'
             - '../../Entity/'
             - '../../Tests/'
+            - '../../Resources/'
             - '../../Kernel.php'
 
     Acme\Application\Admin\Controller\:

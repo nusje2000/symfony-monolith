@@ -6,7 +6,10 @@ namespace Acme\Component\SymfonyMonolith;
 
 use Acme\Component\SymfonyMonolith\Exception\NoApplicationLoaded;
 use Acme\Component\SymfonyMonolith\Exception\NoLoadableApplicationFound;
+use Acme\Component\SymfonyMonolith\Loader\ArgvLoadingStrategy;
+use Acme\Component\SymfonyMonolith\Loader\EnvironmentLoadingStrategy;
 use Acme\Component\SymfonyMonolith\Loader\LoadingStrategy;
+use Acme\Component\SymfonyMonolith\Loader\SubdomainLoadingStrategy;
 use Symfony\Component\HttpKernel\KernelInterface;
 
 final class ApplicationLoader
@@ -29,9 +32,18 @@ final class ApplicationLoader
     /**
      * @param array<LoadingStrategy> $loadingStrategies
      */
-    public function __construct(ApplicationRegistry $registry, array $loadingStrategies)
+    public function __construct(ApplicationRegistry $registry, ?array $loadingStrategies = null)
     {
         $this->registry = $registry;
+
+        if (null === $loadingStrategies) {
+            $loadingStrategies = [
+                new EnvironmentLoadingStrategy(),
+                new ArgvLoadingStrategy(),
+                new SubdomainLoadingStrategy(),
+            ];
+        }
+
         $this->loadingStrategies = $loadingStrategies;
     }
 
