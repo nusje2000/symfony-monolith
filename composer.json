@@ -1,4 +1,5 @@
 {
+    "name": "acme/monolith",
     "type": "project",
     "license": "proprietary",
     "minimum-stability": "dev",
@@ -7,11 +8,17 @@
         "php": ">=7.2.5",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "nusje2000/composer-monolith": "^1.3",
+        "nusje2000/phpstan-monolith": "^0.1.3",
+        "symfony/http-foundation": "5.2.*",
         "symfony/console": "5.2.*",
         "symfony/dotenv": "5.2.*",
         "symfony/flex": "^1.3.1",
         "symfony/framework-bundle": "5.2.*",
-        "symfony/yaml": "5.2.*"
+        "symfony/yaml": "5.2.*",
+        "symfony/dependency-injection": "5.2.*",
+        "symfony/http-kernel": "5.2.*",
+        "symfony/routing": "5.2.*"
     },
     "require-dev": {
         "phpstan/phpstan": "^0.12.63",
@@ -39,9 +46,11 @@
     "replace": {
         "symfony/polyfill-ctype": "*",
         "symfony/polyfill-iconv": "*",
-        "symfony/polyfill-php72": "*"
-    },
-    "scripts": {
+        "symfony/polyfill-php72": "*",
+        "acme/admin": "self.version",
+        "acme/api": "self.version",
+        "acme/client": "self.version",
+        "acme/symfony-monolith": "self.version"
     },
     "conflict": {
         "symfony/symfony": "*"

@@ -1,4 +1,7 @@
 {
+    "aeviiq/collection": {
+        "version": "v3.3"
+    },
     "amphp/amp": {
         "version": "v2.5.1"
     },
@@ -26,14 +29,29 @@
     "felixfbecker/language-server-protocol": {
         "version": "v1.5.0"
     },
+    "monolog/monolog": {
+        "version": "2.2.0"
+    },
     "myclabs/deep-copy": {
         "version": "1.10.2"
+    },
+    "myclabs/php-enum": {
+        "version": "1.7.7"
     },
     "netresearch/jsonmapper": {
         "version": "v2.1.0"
     },
     "nikic/php-parser": {
         "version": "v4.10.3"
+    },
+    "nusje2000/composer-monolith": {
+        "version": "v1.3.1"
+    },
+    "nusje2000/dependency-graph": {
+        "version": "v2.3.1"
+    },
+    "nusje2000/phpstan-monolith": {
+        "version": "v0.1.3"
     },
     "openlss/lib-array2xml": {
         "version": "1.0.0"

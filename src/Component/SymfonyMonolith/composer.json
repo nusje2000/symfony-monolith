@@ -1,0 +1,18 @@
+{
+    "name": "acme/symfony-monolith",
+    "type": "project",
+    "license": "proprietary",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "symfony/console": "5.2.*",
+        "symfony/framework-bundle": "5.2.*",
+        "symfony/http-kernel": "5.2.*",
+        "symfony/http-foundation": "5.2.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Acme\\Application\\Admin\\": "."
+        }
+    }
+}
