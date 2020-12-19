@@ -6,7 +6,7 @@ An example of a monolithic repository with multiple standalone applications.
 
 At the company I work for, we use a monolithic repository that contains multiple symfony applications. When a deployment happens, the entire repository will be
 packaged and deployed to the server, including all the code that the application does not use. All the applications in this repository are also tightly coupled
-to the existance of the monolithic repositry and are not able to run on themselves.
+to the existance of the monolithic repository and are not able to run on themselves.
 
 ## The structure
 
