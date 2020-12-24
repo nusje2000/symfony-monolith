@@ -2,12 +2,8 @@
 
 declare(strict_types=1);
 
-use Acme\Application\Admin\Kernel as AdminKernel;
-use Acme\Application\Api\Kernel as ApiKernel;
-use Acme\Application\Client\Kernel as ClientKernel;
+use Acme\Application\ApplicationRegistryFactory;
 use Acme\Component\SymfonyMonolith\ApplicationLoader;
-use Acme\Component\SymfonyMonolith\ApplicationRegistry;
-use Acme\Component\SymfonyMonolith\Factory\ConstructorFactory;
 use Acme\Component\SymfonyMonolith\KernelEnvironmentInitializer;
 use Symfony\Component\Dotenv\Dotenv;
 use Symfony\Component\ErrorHandler\Debug;
@@ -27,10 +23,7 @@ if ($_SERVER['APP_DEBUG']) {
 $debug = (bool) $_SERVER['APP_DEBUG'];
 $environment = (string) $_SERVER['APP_ENV'];
 
-$registry = new ApplicationRegistry();
-$registry->register('admin', new ConstructorFactory(AdminKernel::class, $environment, $debug));
-$registry->register('client', new ConstructorFactory(ClientKernel::class, $environment, $debug));
-$registry->register('api', new ConstructorFactory(ApiKernel::class, $environment, $debug));
+$registry = ApplicationRegistryFactory::create($environment, $debug);
 
 $loader = new ApplicationLoader($registry);
 $loader->load();

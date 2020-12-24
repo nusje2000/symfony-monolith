@@ -42,12 +42,11 @@ TODO
 ### Development utilities
 
 - cache clearing
-- cross-application commands
 - ui for managing all applications
 - root index page
 - adding a simple configuration inferface (like yml, xml, etc.)
 
 # The development process
 
-If you are intrested in the development process of this repository, you can checkout the [Dev Log](./docs/dev_log.md) for issue's I've encountered and the
+If you are intrested in the development process of this repository, you can check out the [Dev Log](./docs/dev_log.md) for issue's I've encountered and the
 solutions to them.

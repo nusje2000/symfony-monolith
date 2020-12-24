@@ -1,11 +1,12 @@
 #!/usr/bin/env php
 <?php
 
+declare(strict_types=1);
+
 use Acme\Application\ApplicationRegistryFactory;
-use Acme\Component\SymfonyMonolith\ApplicationLoader;
-use Acme\Component\SymfonyMonolith\Console\Application;
-use Acme\Component\SymfonyMonolith\KernelEnvironmentInitializer;
+use Acme\Component\MonolithicConsole\Application;
 use Symfony\Component\Console\Input\ArgvInput;
+use Symfony\Component\Console\Output\ConsoleOutput;
 use Symfony\Component\Dotenv\Dotenv;
 
 if (!in_array(PHP_SAPI, ['cli', 'phpdbg', 'embed'], true)) {
@@ -35,11 +36,5 @@ $environment = (string) $_SERVER['APP_ENV'];
 
 $registry = ApplicationRegistryFactory::create($environment, $debug);
 
-$loader = new ApplicationLoader($registry);
-$loader->load();
-
-(new KernelEnvironmentInitializer($loader))->initialize(dirname(__DIR__));
-
-$kernel = $loader->getLoadedKernel();
-$application = new Application($kernel);
-$application->run($input);
+$application = new Application($registry);
+$application->run($input, new ConsoleOutput());

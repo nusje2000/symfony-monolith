@@ -23,6 +23,7 @@ class Kernel extends BaseKernel
             if ($envs[$this->environment] ?? $envs['all'] ?? false) {
                 yield new $class();
             }
+
         }
     }
 
@@ -45,20 +46,5 @@ class Kernel extends BaseKernel
         if (is_file(__DIR__ . '/Resources/config/routes.yaml')) {
             $routes->import('./Resources/config/routes.yaml');
         }
-    }
-
-    public function getCacheDir(): string
-    {
-        return (string) ($_SERVER['SYMFONY_CACHE_DIR'] ?? parent::getCacheDir());
-    }
-
-    public function getLogDir(): string
-    {
-        return (string) ($_SERVER['SYMFONY_LOG_DIR'] ?? parent::getLogDir());
-    }
-
-    public function getProjectDir(): string
-    {
-        return (string) ($_SERVER['SYMFONY_PROJECT_DIR'] ?? parent::getProjectDir());
     }
 }

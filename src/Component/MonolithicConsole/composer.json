@@ -1,14 +1,14 @@
 {
-    "name": "acme/symfony-monolith",
+    "name": "acme/monolithic-console",
     "type": "project",
     "license": "proprietary",
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
-        "symfony/console": "^5.0",
-        "symfony/framework-bundle": "^5.0",
-        "symfony/http-kernel": "^5.0",
-        "symfony/http-foundation": "^5.0"
+        "acme/symfony-monolith": "self.version",
+        "nusje2000/process-runner": "^0.2",
+        "symfony/process": "^5.0",
+        "symfony/console": "^5.0"
     },
     "autoload": {
         "psr-4": {
