@@ -252,7 +252,13 @@
     "symfony/http-kernel": {
         "version": "v5.2.0"
     },
+    "symfony/mime": {
+        "version": "v5.2.1"
+    },
     "symfony/polyfill-intl-grapheme": {
+        "version": "v1.20.0"
+    },
+    "symfony/polyfill-intl-idn": {
         "version": "v1.20.0"
     },
     "symfony/polyfill-intl-normalizer": {
@@ -290,6 +296,26 @@
     "symfony/string": {
         "version": "v5.2.0"
     },
+    "symfony/translation-contracts": {
+        "version": "v2.3.0"
+    },
+    "symfony/twig-bridge": {
+        "version": "v5.2.1"
+    },
+    "symfony/twig-bundle": {
+        "version": "5.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "5.0",
+            "ref": "fab9149bbaa4d5eca054ed93f9e1b66cc500895d"
+        },
+        "files": [
+            "./config/packages/test/twig.yaml",
+            "./config/packages/twig.yaml",
+            "./templates/base.html.twig"
+        ]
+    },
     "symfony/var-dumper": {
         "version": "v5.2.0"
     },
@@ -304,6 +330,9 @@
     },
     "theseer/tokenizer": {
         "version": "1.2.0"
+    },
+    "twig/twig": {
+        "version": "v3.1.1"
     },
     "vimeo/psalm": {
         "version": "4.3.1"

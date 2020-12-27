@@ -25,4 +25,20 @@ When defining a new entry point (like bin/console or public/index.php), you have
 
 ### Solution
 
-Add an ApplicationRegistryFactory to the root of the `src/Application` directory. Thic class can now contains the logic for creating the registry. 
+Add an ApplicationRegistryFactory to the root of the `src/Application` directory. Thic class can now contains the logic for creating the registry.
+
+## Alternate public directory
+
+Each application has its own assets and public directory. This will be under `Resources/public`.
+
+### Solution
+
+To configure this directory, you have to configure the
+`extra.public-dir` setting in the composer file.
+See [Symfony Documentation](https://symfony.com/doc/current/configuration/override_dir_structure.html#override-the-public-directory).
+
+The `assets:install` command will work correctly since the `kernel.project_dir` will be pointing to the root of the application. The command will then see the
+composer file and read the configuration from there.
+
+To serve the assets dynamically based on the loaded application, a `AssetRouter` has to be writen. This can then be used in the index.php to serve assets if
+found.

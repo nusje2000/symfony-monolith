@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use Acme\Application\ApplicationRegistryFactory;
 use Acme\Component\SymfonyMonolith\ApplicationLoader;
+use Acme\Component\SymfonyMonolith\Asset\AssetRouter;
 use Acme\Component\SymfonyMonolith\KernelEnvironmentInitializer;
 use Symfony\Component\Dotenv\Dotenv;
 use Symfony\Component\ErrorHandler\Debug;
@@ -32,7 +33,9 @@ $loader->load();
 
 $kernel = $loader->getLoadedKernel();
 $request = Request::createFromGlobals();
-$response = $kernel->handle($request);
+
+// First search if requested path is an asset, then let the kernel handle the request
+$response = AssetRouter::create()->handle($kernel, $request) ?? $kernel->handle($request);
 $response->send();
 
 if ($kernel instanceof TerminableInterface) {

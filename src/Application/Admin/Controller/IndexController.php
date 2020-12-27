@@ -11,6 +11,8 @@ final class IndexController extends AbstractController
 {
     public function index(): Response
     {
-        return new Response('Admin environment');
+        return $this->render('index.html.twig', [
+            'project_dir' => dirname(__DIR__),
+        ]);
     }
 }

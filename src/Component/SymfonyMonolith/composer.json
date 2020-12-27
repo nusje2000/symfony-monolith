@@ -5,6 +5,7 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
+        "ext-fileinfo": "*",
         "symfony/console": "^5.0",
         "symfony/framework-bundle": "^5.0",
         "symfony/http-kernel": "^5.0",

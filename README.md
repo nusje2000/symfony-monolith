@@ -17,6 +17,10 @@ When developing the applications, a single server can host all the applications.
 api.localhost). This routing will be done by the index that is provided by the monolithic repository. Because the index in the root routes request via the
 correct kernel, there is almost no code/config required in the applications themselves, keeping the applications decoupled from the monolithic repository.
 
+There are a few changes that conflict with the symfony directory structure. These include:
+
+1. All directories that do not contain code will be placed under Resources, tfhese include: `public`, `config`, `templates`, etc.
+
 ## Deploying to production
 
 TODO
@@ -38,6 +42,7 @@ TODO
 ### Frontend
 
 - assets
+- asset router for index.php
 
 ### Development utilities
 
