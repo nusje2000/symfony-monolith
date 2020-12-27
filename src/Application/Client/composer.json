@@ -19,5 +19,8 @@
         "psr-4": {
             "Acme\\Application\\Admin\\": "."
         }
+    },
+    "extra": {
+        "public-dir": "Resources/public"
     }
 }
