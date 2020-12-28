@@ -41,8 +41,7 @@ TODO
 
 ### Frontend
 
-- assets
-- asset router for index.php
+- encore
 
 ### Development utilities
 
