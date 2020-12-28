@@ -45,7 +45,6 @@ TODO
 
 ### Development utilities
 
-- cache clearing
 - ui for managing all applications
 - root index page
 - adding a simple configuration inferface (like yml, xml, etc.)
