@@ -36,8 +36,8 @@ final class EnvironmentVariableConfigPass
      */
     private static function processString(string $string)
     {
-        /** @psalm-var array{type: string, env_name: string, 0: string} $match */
         while (0 !== preg_match(self::ENV_PATTERN, $string, $match)) {
+            /** @psalm-var array{type: string, env_name: string, 0: string} $match */
             $type = $match['type'] ?? 'string';
             $envName = $match['env_name'];
             /** @psalm-var scalar $env */

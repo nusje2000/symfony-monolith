@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Acme\Component\SymfonyMonolith;
 
-use Acme\Component\SymfonyMonolith\Config\Configuration;
 use Acme\Component\SymfonyMonolith\Config\Factory;
 use Acme\Component\SymfonyMonolith\Loader\ApplicationLoader;
 use Acme\Component\SymfonyMonolith\Loader\ApplicationRegistry;
@@ -39,21 +38,30 @@ final class SymfonyMonolith
      */
     private $rootDir;
 
-    /**
-     * @param array<LoadingStrategy> $loadingStrategies
-     */
-    public function __construct(string $rootDir, ?array $loadingStrategies = null)
+    public function __construct(string $rootDir, ApplicationRegistry $registry, ApplicationLoader $applicationLoader)
     {
-        $this->registry = new ApplicationRegistry();
-        $this->loader = new ApplicationLoader($this->registry, $loadingStrategies ?? $this->getDefaultLoadingStrategies());
+        $this->registry = $registry;
+        $this->loader = $applicationLoader;
         $this->environmentInitializer = new KernelEnvironmentInitializer($this->loader);
         $this->rootDir = $rootDir;
     }
 
-    public function initialize(?string $configurationFile = null): void
+    public static function create(string $rootDir, ?string $configurationFile = null): self
     {
-        $config = Factory::createFromFile($configurationFile ?? $this->rootDir . '/' . self::DEFAULT_CONFIG_NAME);
-        $this->registry->register(...$config->applications());
+        $registry = new ApplicationRegistry();
+        $config = Factory::createFromFile($configurationFile ?? $rootDir . '/' . self::DEFAULT_CONFIG_NAME);
+        $registry->register(...$config->applications());
+
+        return new self($rootDir, $registry, new ApplicationLoader($registry, self::getDefaultLoadingStrategies()));
+    }
+
+    public function registry(): ApplicationRegistry
+    {
+        return $this->registry;
+    }
+
+    public function initialize(): void
+    {
         $this->loader->load();
         $this->environmentInitializer->initialize($this->rootDir);
     }
@@ -71,7 +79,7 @@ final class SymfonyMonolith
     /**
      * @return array<LoadingStrategy>
      */
-    private function getDefaultLoadingStrategies(): array
+    private static function getDefaultLoadingStrategies(): array
     {
         if (PHP_SAPI === self::SAPI_CLI) {
             return [
