@@ -33,20 +33,10 @@ TODO
 
 ### DevOps
 
-- composer monolith
-- CI
-- phpstan
-- psalm
 - package command (for creating releases)
-
-### Frontend
-
-- assets
-- asset router for index.php
 
 ### Development utilities
 
-- cache clearing
 - ui for managing all applications
 - root index page
 - adding a simple configuration inferface (like yml, xml, etc.)

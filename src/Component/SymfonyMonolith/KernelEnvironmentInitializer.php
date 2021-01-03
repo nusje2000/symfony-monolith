@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Acme\Component\SymfonyMonolith;
 
+use Acme\Component\SymfonyMonolith\Loader\ApplicationLoader;
+
 final class KernelEnvironmentInitializer
 {
     public const CACHE_DIR_ENVIRONMENT = 'APP_CACHE_DIR';
@@ -24,7 +26,7 @@ final class KernelEnvironmentInitializer
 
     public function initialize(string $rootDir): void
     {
-        $application = $this->applicationLoader->getLoadedApplication();
+        $application = $this->applicationLoader->getLoadedApplication()->name();
 
         $_SERVER[self::CACHE_DIR_ENVIRONMENT] = $this->preparePath($rootDir, self::RELATIVE_CACHE_PATH, $application);
         $_SERVER[self::LOG_DIR_ENVIRONMENT] = $this->preparePath($rootDir, self::RELATIVE_LOG_PATH, $application);

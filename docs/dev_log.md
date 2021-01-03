@@ -17,15 +17,19 @@ When executing a command using the root bin/console you want to be able to speci
 ### Solution
 
 Add a custom implementation of the `Symfony\Bundle\FrameworkBundle\Console\Application` class, that defines --application as input option. Then
-the `Acme\Component\SymfonyMonolith\Loader\ArgvLoadingStrategy` can use this option since the command will now be valid for the application.
+the `Acme\Component\SymfonyMonolith\Loader\Strategy\ArgvLoadingStrategy` can use this option since the command will now be valid for the application.
 
 ## Application registry has to be redefined in each entry point
 
 When defining a new entry point (like bin/console or public/index.php), you have to redefine the list of available applications.
 
-### Solution
+### Solution 1
 
 Add an ApplicationRegistryFactory to the root of the `src/Application` directory. Thic class can now contains the logic for creating the registry.
+
+### Solution 2
+
+Create a config file that defines which applications are available and how to initialize them.
 
 ## Alternate public directory
 

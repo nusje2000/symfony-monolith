@@ -2,15 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Acme\Component\SymfonyMonolith;
+namespace Acme\Component\SymfonyMonolith\Loader;
 
 use Acme\Component\SymfonyMonolith\Exception\NoApplicationLoaded;
 use Acme\Component\SymfonyMonolith\Exception\NoLoadableApplicationFound;
-use Acme\Component\SymfonyMonolith\Loader\ArgvLoadingStrategy;
-use Acme\Component\SymfonyMonolith\Loader\EnvironmentLoadingStrategy;
-use Acme\Component\SymfonyMonolith\Loader\LoadingStrategy;
-use Acme\Component\SymfonyMonolith\Loader\SubdomainLoadingStrategy;
-use Symfony\Component\HttpKernel\KernelInterface;
+use Acme\Component\SymfonyMonolith\Loader\Strategy\LoadingStrategy;
 
 final class ApplicationLoader
 {
@@ -25,24 +21,16 @@ final class ApplicationLoader
     private $loadingStrategies;
 
     /**
-     * @var string|null
+     * @var Application|null
      */
     private $loadedApplication;
 
     /**
      * @param array<LoadingStrategy> $loadingStrategies
      */
-    public function __construct(ApplicationRegistry $registry, ?array $loadingStrategies = null)
+    public function __construct(ApplicationRegistry $registry, array $loadingStrategies)
     {
         $this->registry = $registry;
-
-        if (null === $loadingStrategies) {
-            $loadingStrategies = [
-                new EnvironmentLoadingStrategy(),
-                new ArgvLoadingStrategy(),
-                new SubdomainLoadingStrategy(),
-            ];
-        }
 
         $this->loadingStrategies = $loadingStrategies;
     }
@@ -62,17 +50,12 @@ final class ApplicationLoader
         throw NoLoadableApplicationFound::create();
     }
 
-    public function getLoadedApplication(): string
+    public function getLoadedApplication(): Application
     {
         if (null === $this->loadedApplication) {
             throw NoApplicationLoaded::create();
         }
 
         return $this->loadedApplication;
-    }
-
-    public function getLoadedKernel(): KernelInterface
-    {
-        return $this->registry->getKernel($this->getLoadedApplication());
     }
 }
