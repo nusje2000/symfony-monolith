@@ -19,7 +19,7 @@ correct kernel, there is almost no code/config required in the applications them
 
 There are a few changes that conflict with the symfony directory structure. These include:
 
-1. All directories that do not contain code will be placed under Resources, tfhese include: `public`, `config`, `templates`, etc.
+1. All directories that do not contain code will be placed under Resources, these include: `public`, `config`, `templates`, etc.
 
 ## Deploying to production
 
