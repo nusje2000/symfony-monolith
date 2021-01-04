@@ -33,10 +33,6 @@ TODO
 
 ### DevOps
 
-- composer monolith
-- CI
-- phpstan
-- psalm
 - package command (for creating releases)
 
 ### Frontend

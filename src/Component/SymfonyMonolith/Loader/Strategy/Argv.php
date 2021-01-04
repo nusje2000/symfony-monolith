@@ -2,14 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Acme\Component\SymfonyMonolith\Loader;
+namespace Acme\Component\SymfonyMonolith\Loader\Strategy;
 
-use Acme\Component\SymfonyMonolith\ApplicationRegistry;
+use Acme\Component\SymfonyMonolith\Loader\Application;
+use Acme\Component\SymfonyMonolith\Loader\ApplicationRegistry;
 use Symfony\Component\Console\Input\ArgvInput;
 
-final class ArgvLoadingStrategy implements LoadingStrategy
+final class Argv implements LoadingStrategy
 {
-    public function getApplication(ApplicationRegistry $registry): ?string
+    public function getApplication(ApplicationRegistry $registry): ?Application
     {
         $input = new ArgvInput();
 
@@ -17,7 +18,7 @@ final class ArgvLoadingStrategy implements LoadingStrategy
         $application = $input->getParameterOption(['-a', '--application'], null);
 
         if (is_string($application) && $registry->hasApplication($application)) {
-            return $application;
+            return $registry->getApplication($application);
         }
 
         return null;

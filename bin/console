@@ -1,10 +1,8 @@
 #!/usr/bin/env php
 <?php
 
-use Acme\Application\ApplicationRegistryFactory;
-use Acme\Component\SymfonyMonolith\ApplicationLoader;
 use Acme\Component\SymfonyMonolith\Console\Application;
-use Acme\Component\SymfonyMonolith\KernelEnvironmentInitializer;
+use Acme\Component\SymfonyMonolith\SymfonyMonolith;
 use Symfony\Component\Console\Input\ArgvInput;
 use Symfony\Component\Dotenv\Dotenv;
 
@@ -30,16 +28,9 @@ if ($input->hasParameterOption('--no-debug', true)) {
 
 (new Dotenv())->bootEnv(dirname(__DIR__) . '/.env');
 
-$debug = (bool) $_SERVER['APP_DEBUG'];
-$environment = (string) $_SERVER['APP_ENV'];
+$monolith = SymfonyMonolith::create(dirname(__DIR__));
+$monolith->initialize();
 
-$registry = ApplicationRegistryFactory::create($environment, $debug);
-
-$loader = new ApplicationLoader($registry);
-$loader->load();
-
-(new KernelEnvironmentInitializer($loader))->initialize(dirname(__DIR__));
-
-$kernel = $loader->getLoadedKernel();
+$kernel = $monolith->kernel();
 $application = new Application($kernel);
 $application->run($input);

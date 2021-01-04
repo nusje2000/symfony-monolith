@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Acme\Component\MonolithicConsole\Display;
 
-use Acme\Component\SymfonyMonolith\ApplicationRegistry;
+use Acme\Component\SymfonyMonolith\Loader\ApplicationRegistry;
 use Symfony\Component\Console\Helper\QuestionHelper;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\ConsoleOutputInterface;

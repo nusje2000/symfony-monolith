@@ -3,8 +3,8 @@
 
 declare(strict_types=1);
 
-use Acme\Application\ApplicationRegistryFactory;
 use Acme\Component\MonolithicConsole\Application;
+use Acme\Component\SymfonyMonolith\SymfonyMonolith;
 use Symfony\Component\Console\Input\ArgvInput;
 use Symfony\Component\Console\Output\ConsoleOutput;
 use Symfony\Component\Dotenv\Dotenv;
@@ -34,7 +34,7 @@ if ($input->hasParameterOption('--no-debug', true)) {
 $debug = (bool) $_SERVER['APP_DEBUG'];
 $environment = (string) $_SERVER['APP_ENV'];
 
-$registry = ApplicationRegistryFactory::create($environment, $debug);
+$monolith = SymfonyMonolith::create(dirname(__DIR__));
 
-$application = new Application($registry);
+$application = new Application($monolith->registry());
 $application->run($input, new ConsoleOutput());

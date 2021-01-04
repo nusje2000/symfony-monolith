@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Acme\Component\MonolithicConsole;
 
 use Acme\Component\MonolithicConsole\Display\ApplicationPicker;
-use Acme\Component\SymfonyMonolith\ApplicationRegistry;
+use Acme\Component\SymfonyMonolith\Loader\ApplicationRegistry;
 use Nusje2000\ProcessRunner\Executor\ExecutorInterface;
 use Nusje2000\ProcessRunner\Executor\ParallelExecutor;
 use Nusje2000\ProcessRunner\Listener\ConsoleListener;

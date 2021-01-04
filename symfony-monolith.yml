@@ -1,0 +1,19 @@
+applications:
+    -   name: 'admin'
+        kernel:
+            class: Acme\Application\Admin\Kernel
+            arguments:
+                - '%env(string:APP_ENV)%'
+                - '%env(bool:APP_DEBUG)%'
+    -   name: 'client'
+        kernel:
+            class: Acme\Application\Client\Kernel
+            arguments:
+                - '%env(string:APP_ENV)%'
+                - '%env(bool:APP_DEBUG)%'
+    -   name: 'api'
+        kernel:
+            class: Acme\Application\Api\Kernel
+            arguments:
+                - '%env(string:APP_ENV)%'
+                - '%env(bool:APP_DEBUG)%'
