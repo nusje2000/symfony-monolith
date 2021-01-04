@@ -35,6 +35,10 @@ TODO
 
 - package command (for creating releases)
 
+### Frontend
+
+- encore
+
 ### Development utilities
 
 - ui for managing all applications
