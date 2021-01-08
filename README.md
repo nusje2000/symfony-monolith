@@ -2,6 +2,8 @@
 
 An example of a monolithic repository with multiple standalone applications.
 
+The current code shoulf *NOT* be used in a production environment.
+
 ## Motivation
 
 At the company I work for, we use a monolithic repository that contains multiple symfony applications. When a deployment happens, the entire repository will be
